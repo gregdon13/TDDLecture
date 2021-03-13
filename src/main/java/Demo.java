@@ -7,17 +7,11 @@ public class Demo {
         while (redo) {
             redo = false;
             for (int i = 0; i < strArr.length - 1; i++) {
-                if (strArr[i] != null && strArr[i+1] != null) {
-                    if (strArr[i].length() > strArr[i + 1].length()) {
-                        strArr = swapIndex(strArr, i, i+1);
-                        redo = true;
-                    } else if (strArr[i].compareTo(strArr[i + 1]) > 0 && strArr[i].length() == strArr[i + 1].length()) {
-                        strArr = swapIndex(strArr, i, i+1);
+                if (strArr[i+1] != null) {
+                    if (needToSwap(strArr[i], strArr[i + 1])) {
+                        swapIndex(strArr, i, i + 1);
                         redo = true;
                     }
-                } else if (strArr[i] == null) {
-                    strArr = swapIndex(strArr, i, i+1);
-                    redo = true;
                 }
             }
         }
@@ -32,6 +26,9 @@ public class Demo {
     }
 
     public Boolean needToSwap(String one, String two) {
+        if (one == null && two == null) {
+            return false;
+        } else {
             if (one == null) {
                 return true;
             } else if (one.compareTo(two) > 0 && one.length() == two.length()) {
@@ -41,5 +38,6 @@ public class Demo {
             } else {
                 return false;
             }
+        }
     }
 }

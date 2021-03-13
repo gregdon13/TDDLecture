@@ -227,6 +227,19 @@ public class DemoTest {
         Assert.assertTrue(actual);
     }
 
+    @Test
+    public void booleanSwapIndexNulls() {
+        //Arrange
+        String a = null;
+        String b = null;
+
+        //Act
+        boolean actual = demo.needToSwap(a, b);
+
+        //Assert
+        Assert.assertFalse(actual);
+    }
+
 
     //Below need Regex and will be written later
 
